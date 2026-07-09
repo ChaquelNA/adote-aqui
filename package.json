@@ -1,7 +1,5 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "name": "adote-aqui",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",

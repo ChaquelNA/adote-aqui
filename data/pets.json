@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Luna",
+    "species": "cachooro",
+    "age": "6",
+    "size": "pequeno",
+    "city": "sjc",
+    "ong": "Patinhas Felizes, lindo pfvr",
+    "descriptionShort": "Gatinha carinhosa, adora colo e ronronar pertinho.",
+    "image": "/pets/luna.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Thor",
+    "species": "Cachorro",
+    "age": "3 anos",
+    "size": "Médio",
+    "city": "Pouso Alegre - MG",
+    "ong": "Amigo Fiel",
+    "descriptionShort": "Cachorro alegre, companheiro para passeios e brincadeiras.",
+    "image": "/pets/thor.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "Mel",
+    "species": "Cachorro",
+    "age": "1 ano",
+    "size": "Pequeno",
+    "city": "São José dos Campos - SP",
+    "ong": "Rede de Proteção Animal",
+    "descriptionShort": "Muito dócil, se dá bem com crianças e outros animais.",
+    "image": "/pets/mel.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Nina",
+    "species": "Gato",
+    "age": "4 anos",
+    "size": "Médio",
+    "city": "Taubaté - SP",
+    "ong": "Gatinhos do Bem",
+    "descriptionShort": "Gata tranquila, perfeita para quem quer uma companhia calma em casa.",
+    "image": "/pets/nina.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Bidu",
+    "species": "Cachorro",
+    "age": "5 anos",
+    "size": "Médio",
+    "city": "Lorena - SP",
+    "ong": "Corações Peludos",
+    "descriptionShort": "Adulto, muito obediente e carinhoso, procura um lar definitivo.",
+    "image": "/pets/bidu.jpeg"
+  }
+]
