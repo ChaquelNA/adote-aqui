@@ -1,15 +1,48 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const router = useRouter();
 
-  async function logout() {
-    await fetch("/api/auth/logout", {
-      method: "POST",
-    });
+  const [logado, setLogado] = useState(false);
+  const [carregando, setCarregando] = useState(true);
 
-    router.push("/login");
+  async function verificarLogin() {
+    try {
+      const resposta = await fetch("/api/auth/status");
+      const data = await resposta.json();
+
+      setLogado(data.authenticated);
+    } catch (error) {
+      console.error("Erro ao verificar login:", error);
+      setLogado(false);
+    } finally {
+      setCarregando(false);
+    }
+  }
+
+  useEffect(() => {
+    verificarLogin();
+
+    router.events.on("routeChangeComplete", verificarLogin);
+
+    return () => {
+      router.events.off("routeChangeComplete", verificarLogin);
+    };
+  }, [router.events]);
+
+  async function logout() {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+      });
+
+      setLogado(false);
+      router.push("/login");
+    } catch (error) {
+      console.error("Erro ao sair:", error);
+    }
   }
 
   return (
@@ -59,20 +92,37 @@ export default function Header() {
           Cadastrar Pet
         </Link>
 
-        <button
-          onClick={logout}
-          style={{
-            color: "white",
-            background: "#dc3545",
-            border: "none",
-            padding: "8px 18px",
-            borderRadius: "999px",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}
-        >
-          Sair
-        </button>
+        {!carregando &&
+          (logado ? (
+            <button
+              onClick={logout}
+              style={{
+                color: "white",
+                backgroundColor: "#dc3545",
+                border: "none",
+                padding: "8px 18px",
+                borderRadius: "999px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Sair
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              style={{
+                color: "#31A9C4",
+                textDecoration: "none",
+                border: "1px solid #31A9C4",
+                padding: "8px 18px",
+                borderRadius: "999px",
+                fontWeight: "bold",
+              }}
+            >
+              Login
+            </Link>
+          ))}
       </nav>
     </header>
   );
